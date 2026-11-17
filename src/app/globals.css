@@ -39,20 +39,20 @@
     font-weight: 700;
   }
 
-  /* Apple Ultra-Transparent Glass Cards with High Contrast Bold Typography */
+  /* Fully Transparent Clean Glass Cards with High Contrast Bold Typography */
   .glass-card-transparent {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    box-shadow: 0 20px 45px rgba(7, 21, 36, 0.08);
+    background: transparent;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(7, 21, 36, 0.08);
   }
 
   .glass-pill-transparent {
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
   * {

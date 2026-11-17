@@ -33,7 +33,7 @@ export function Section1Hero({ onContactClick }: Section1HeroProps) {
     <section
       id="hero-harvest"
       ref={containerRef}
-      className="relative w-full min-h-[94vh] flex flex-col justify-between pt-24 sm:pt-32 pb-14 sm:pb-20 px-4 sm:px-10 lg:px-20 overflow-hidden bg-transparent text-[#0F2537]"
+      className="relative w-full min-h-[94vh] flex flex-col justify-between pt-24 sm:pt-32 pb-16 sm:pb-28 px-4 sm:px-10 lg:px-20 overflow-hidden bg-transparent text-[#0F2537] mb-8 sm:mb-16"
     >
       {/* 1. Pure Ambient Coastal Sea Breeze Lighting (Zero watermarks, zero text overlaps) */}
       <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-[#E0F2FE]/40 via-transparent to-transparent pointer-events-none" />
@@ -81,14 +81,14 @@ export function Section1Hero({ onContactClick }: Section1HeroProps) {
 
       {/* 3. Hero Asymmetric Photographic Spread */}
       <div className="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-        {/* Left: Fish Platter Composition in Apple-Style Ultra-Transparent Glass Card */}
+        {/* Left: Fish Platter Composition in Fully Transparent Glass Card */}
         <div className="md:col-span-7 flex justify-center md:justify-start">
           <motion.div
             style={{ scale: imageScale, y: imageY }}
             className="relative max-w-lg w-full will-change-transform"
           >
-            <div className="relative rounded-[28px] overflow-hidden bg-white/12 backdrop-blur-xl border border-white/40 p-3 shadow-[0_25px_60px_rgba(7,21,36,0.1)]">
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-white/5">
+            <div className="relative rounded-[28px] overflow-hidden bg-transparent backdrop-blur-md border border-white/30 p-3 shadow-[0_20px_45px_rgba(7,21,36,0.1)]">
+              <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-transparent">
                 <img
                   src="/fish/vanjaram_ice_platter.jpg"
                   alt="Fresh Vanjaram on Crushed Ice Platter"
@@ -97,13 +97,13 @@ export function Section1Hero({ onContactClick }: Section1HeroProps) {
               </div>
 
               {/* Status Badge */}
-              <div className="absolute top-6 left-6 px-3.5 py-1.5 rounded-full bg-white/30 backdrop-blur-md border border-white/50 text-[10px] sm:text-xs font-mono text-[#071524] font-black flex items-center gap-1.5 shadow-sm">
+              <div className="absolute top-6 left-6 px-3.5 py-1.5 rounded-full bg-transparent backdrop-blur-md border border-white/30 text-[10px] sm:text-xs font-mono text-[#071524] font-black flex items-center gap-1.5 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#006A60] animate-pulse" />
                 <span>{t("dawnLandingBadge")}</span>
               </div>
 
               {/* Info Strip */}
-              <div className="mt-3 p-3.5 rounded-xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-between">
+              <div className="mt-3 p-3.5 rounded-xl bg-transparent backdrop-blur-sm border border-white/25 flex items-center justify-between">
                 <div>
                   <div className="text-[10px] sm:text-xs font-mono text-[#0284C7] uppercase tracking-wider font-extrabold">
                     {t("signatureSpecialtyPill")}
@@ -113,7 +113,7 @@ export function Section1Hero({ onContactClick }: Section1HeroProps) {
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/30 border border-white/50 text-[#006A60] text-[10px] font-mono font-extrabold shadow-2xs">
+                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-transparent border border-white/30 text-[#006A60] text-[10px] font-mono font-extrabold shadow-2xs">
                     {t("zeroNetTraumaBadge")}
                   </span>
                 </div>
@@ -131,9 +131,9 @@ export function Section1Hero({ onContactClick }: Section1HeroProps) {
           </motion.div>
         </div>
 
-        {/* Right: Editorial Information in Apple-Style Ultra-Transparent Glass Card */}
+        {/* Right: Editorial Information in Fully Transparent Clean Card */}
         <div className="md:col-span-5 flex items-start justify-between gap-4 sm:gap-6">
-          <div className="p-6 sm:p-8 rounded-[28px] bg-white/12 backdrop-blur-xl border border-white/40 shadow-[0_25px_60px_rgba(7,21,36,0.1)] space-y-3.5 w-full">
+          <div className="p-6 sm:p-8 rounded-[28px] bg-transparent backdrop-blur-md border border-white/30 shadow-[0_20px_45px_rgba(7,21,36,0.1)] space-y-3.5 w-full">
             <span className="block text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-[#0284C7] font-extrabold">
               {t("heroFishCategory")}
             </span>

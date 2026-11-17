@@ -12,10 +12,10 @@ export function SiteFooter() {
   };
 
   return (
-    <footer className="relative w-full bg-white/12 backdrop-blur-3xl text-[#071524] border-t border-white/35 pt-14 sm:pt-20 pb-12 px-4 sm:px-10 lg:px-20">
+    <footer className="relative w-full bg-transparent backdrop-blur-md text-[#071524] border-t border-white/30 pt-14 sm:pt-20 pb-12 px-4 sm:px-10 lg:px-20">
       <div className="max-w-6xl mx-auto">
         {/* Main 4-Column Apple-Style Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pb-12 border-b border-white/30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pb-12 border-b border-white/20">
           {/* Column 1: Brand & Owner Details */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
@@ -27,7 +27,7 @@ export function SiteFooter() {
                   {t("brandName")}
                 </span>
                 {/* PROMINENT OWNER IDENTIFIER AS REQUESTED */}
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/30 backdrop-blur-md border border-white/50 text-[10px] font-mono font-black text-[#0284C7] shadow-2xs">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-transparent backdrop-blur-md border border-white/30 text-[10px] font-mono font-black text-[#0284C7] shadow-2xs">
                   <UserCheck className="w-3 h-3 text-[#006A60]" />
                   <span>{t("footerOwnerTitle")}</span>
                 </div>
@@ -68,22 +68,22 @@ export function SiteFooter() {
               {t("footerCoverageSub")}
             </p>
             <div className="flex flex-wrap gap-1.5 text-[11px] font-mono text-[#071524]">
-              <span className="px-3 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/40 shadow-2xs font-black">
+              <span className="px-3 py-1 rounded-full bg-transparent backdrop-blur-xs border border-white/25 shadow-2xs font-black">
                 {t("cov1")}
               </span>
-              <span className="px-3 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/40 shadow-2xs font-black">
+              <span className="px-3 py-1 rounded-full bg-transparent backdrop-blur-xs border border-white/25 shadow-2xs font-black">
                 {t("cov2")}
               </span>
-              <span className="px-3 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/40 shadow-2xs font-black">
+              <span className="px-3 py-1 rounded-full bg-transparent backdrop-blur-xs border border-white/25 shadow-2xs font-black">
                 {t("cov3")}
               </span>
-              <span className="px-3 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/40 shadow-2xs font-black">
+              <span className="px-3 py-1 rounded-full bg-transparent backdrop-blur-xs border border-white/25 shadow-2xs font-black">
                 {t("cov4")}
               </span>
-              <span className="px-3 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/40 shadow-2xs font-black">
+              <span className="px-3 py-1 rounded-full bg-transparent backdrop-blur-xs border border-white/25 shadow-2xs font-black">
                 {t("cov5")}
               </span>
-              <span className="px-3 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/40 shadow-2xs font-black">
+              <span className="px-3 py-1 rounded-full bg-transparent backdrop-blur-xs border border-white/25 shadow-2xs font-black">
                 {t("cov6")}
               </span>
             </div>
@@ -95,8 +95,8 @@ export function SiteFooter() {
               {t("footerContactTitle")}
             </h4>
             <div className="space-y-3 text-xs font-mono">
-              {/* Owner card */}
-              <div className="p-3.5 rounded-2xl bg-white/25 backdrop-blur-xl border border-white/40 shadow-sm space-y-1">
+              {/* Owner card - Fully Transparent Clean Glass */}
+              <div className="p-3.5 rounded-2xl bg-transparent backdrop-blur-md border border-white/30 shadow-sm space-y-1">
                 <div className="text-[10px] uppercase tracking-wider text-[#0284C7] font-black flex items-center gap-1">
                   <UserCheck className="w-3.5 h-3.5 text-[#006A60]" />
                   <span>{t("ownerContactLabel")}</span>

@@ -33,12 +33,15 @@ export function ZoomParallax({ onSelectVariety }: ZoomParallaxProps) {
     offset: ["start start", "end end"],
   });
 
-  // Zoom scales matching 21st.dev @efferd / Olivier Larose zoom-parallax
-  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
-  const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
-  const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
-  const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
-  const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
+  // Balanced, smooth zoom scales without sudden jumps or blank gaps
+  const scale1 = useTransform(scrollYProgress, [0, 0.88], [1, 2.4]);
+  const scale2 = useTransform(scrollYProgress, [0, 0.88], [1, 2.9]);
+  const scale3 = useTransform(scrollYProgress, [0, 0.88], [1, 3.3]);
+  const scale4 = useTransform(scrollYProgress, [0, 0.88], [1, 3.7]);
+  const scale5 = useTransform(scrollYProgress, [0, 0.88], [1, 4.0]);
+
+  // Smooth opacity to keep visual connection without empty voids
+  const stageOpacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.95, 0.35]);
 
   // Update active variety dynamically as user scrubs through zoom parallax
   useEffect(() => {
@@ -48,49 +51,49 @@ export function ZoomParallax({ onSelectVariety }: ZoomParallaxProps) {
     });
   }, [scrollYProgress]);
 
-  // 7 Zoom Image Layers placed symmetrically around the central stage in Apple-style glass borders
+  // 7 Zoom Image Layers with balanced responsive offsets framing the central card
   const pictures = [
     {
       src: "/fish/vanjaram_ice_platter.jpg",
-      scale: scale4,
+      scale: scale1,
       alt: "Vanjaram Seer Fish on Crushed Ice",
-      classes: "w-[32vw] h-[26vh] sm:w-[24vw] sm:h-[26vh]",
+      classes: "w-[58vw] sm:w-[26vw] h-[26vh] sm:h-[30vh]",
     },
     {
       src: "/fish/sankara.png",
-      scale: scale5,
+      scale: scale2,
       alt: "Sankara Red Snapper",
-      classes: "top-[-28vh] left-[6vw] w-[32vw] h-[26vh] sm:w-[26vw] sm:h-[26vh]",
+      classes: "top-[-18vh] sm:top-[-26vh] left-[18vw] sm:left-[22vw] w-[40vw] sm:w-[22vw] h-[20vh] sm:h-[26vh]",
     },
     {
       src: "/fish/boat_landing_catch.jpg",
-      scale: scale6,
+      scale: scale3,
       alt: "Harbour Dawn Landing",
-      classes: "top-[-10vh] left-[-26vw] w-[26vw] h-[38vh] sm:w-[22vw] sm:h-[42vh]",
+      classes: "top-[-16vh] sm:top-[-22vh] left-[-20vw] sm:left-[-24vw] w-[38vw] sm:w-[20vw] h-[22vh] sm:h-[28vh]",
     },
     {
       src: "/fish/fresh_steaks_ice.jpg",
-      scale: scale5,
+      scale: scale2,
       alt: "Yellowfin Tuna Steaks on Ice",
-      classes: "left-[28vw] w-[28vw] h-[26vh] sm:w-[22vw] sm:h-[26vh]",
+      classes: "top-[2vh] sm:top-[0vh] left-[26vw] sm:left-[28vw] w-[36vw] sm:w-[20vw] h-[18vh] sm:h-[24vh]",
     },
     {
       src: "/fish/vanjaram_cutting.jpg",
-      scale: scale6,
+      scale: scale3,
       alt: "Master Slicing Steaks",
-      classes: "top-[26vh] left-[6vw] w-[24vw] h-[24vh] sm:w-[20vw] sm:h-[24vh]",
+      classes: "top-[4vh] sm:top-[2vh] left-[-26vw] sm:left-[-28vw] w-[36vw] sm:w-[20vw] h-[18vh] sm:h-[24vh]",
     },
     {
       src: "/reference/fresh_silver_tray.png",
-      scale: scale8,
+      scale: scale4,
       alt: "Fresh Silver Ocean Catch",
-      classes: "top-[26vh] left-[-22vw] w-[30vw] h-[24vh] sm:w-[26vw] sm:h-[24vh]",
+      classes: "top-[20vh] sm:top-[25vh] left-[-16vw] sm:left-[-18vw] w-[40vw] sm:w-[22vw] h-[18vh] sm:h-[24vh]",
     },
     {
       src: "/reference/sun_cured_trays.png",
-      scale: scale9,
+      scale: scale5,
       alt: "Sun Cured Karuvadu Trays",
-      classes: "top-[22vh] left-[26vw] w-[20vw] h-[20vh] sm:w-[16vw] sm:h-[16vh]",
+      classes: "top-[18vh] sm:top-[23vh] left-[18vw] sm:left-[20vw] w-[42vw] sm:w-[24vw] h-[20vh] sm:h-[24vh]",
     },
   ];
 
@@ -107,12 +110,16 @@ export function ZoomParallax({ onSelectVariety }: ZoomParallaxProps) {
     <div
       id="zoom-varieties"
       ref={containerRef}
-      className="relative h-[260vh] sm:h-[320vh] bg-transparent text-[#0F2537] border-t border-[#D2E4F0]/60"
+      // Compact height eliminates vast empty scroll space (130vh mobile, 170vh desktop)
+      className="relative h-[135vh] sm:h-[175vh] bg-transparent text-[#0F2537]"
     >
       {/* Sticky Fullscreen Stage (Efferd 21st.dev Architecture) */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center select-none">
+      <motion.div
+        style={{ opacity: stageOpacity }}
+        className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center select-none"
+      >
         {/* Soft Ambient Radial Light Sea Glow */}
-        <div className="absolute inset-0 bg-radial from-[#E0F2FE]/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-radial from-[#E0F2FE]/15 via-transparent to-transparent pointer-events-none" />
 
         {/* 7 Zoom Layers Scaling Dynamically with Scroll */}
         {pictures.map(({ src, scale, alt, classes }, index) => (
@@ -122,36 +129,36 @@ export function ZoomParallax({ onSelectVariety }: ZoomParallaxProps) {
             className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none will-change-transform"
           >
             <div
-              className={`relative overflow-hidden rounded-[26px] sm:rounded-[32px] shadow-[0_20px_50px_rgba(2,132,199,0.16)] border-2 border-white/80 bg-white/70 backdrop-blur-md ${classes}`}
+              className={`relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-[0_15px_35px_rgba(7,21,36,0.12)] border border-white/40 bg-transparent backdrop-blur-xs ${classes}`}
             >
               <img
                 src={src}
                 alt={alt}
                 className="w-full h-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F2537]/30 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071524]/25 via-transparent to-transparent pointer-events-none" />
             </div>
           </motion.div>
         ))}
 
-        {/* Top Header Label */}
+        {/* Top Header Label - Fully Transparent */}
         <div className="absolute top-20 sm:top-24 left-4 right-4 sm:left-10 sm:right-10 z-30 flex items-center justify-between pointer-events-none">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/85 backdrop-blur-2xl border border-white/70 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#0284C7] shadow-sm font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#0D9488]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-transparent backdrop-blur-md border border-white/30 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#0284C7] shadow-xs font-black">
+            <Sparkles className="w-3.5 h-3.5 text-[#006A60]" />
             <span>{t("zoomBadge")}</span>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-2xl border border-white/70 text-[10px] sm:text-xs font-mono text-[#0F2537] shadow-sm font-semibold">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-transparent backdrop-blur-md border border-white/30 text-[10px] sm:text-xs font-mono text-[#071524] shadow-xs font-black">
             <span className="text-[#0284C7]">{t("zoomVarietyBadge")}</span>
-            <span className="font-bold">{currentVariety.number} / {VARIETIES.length}</span>
+            <span className="font-black">{currentVariety.number} / {VARIETIES.length}</span>
           </div>
         </div>
 
-        {/* PROMINENT CENTRAL TYPOGRAPHY (APPLE-STYLE ULTRA-TRANSPARENT GLASS CENTERPIECE CARD) */}
-        <div className="relative z-30 max-w-xl w-full px-4 text-center pointer-events-auto">
-          <div className="rounded-[32px] bg-white/12 backdrop-blur-xl border border-white/40 p-6 sm:p-9 shadow-[0_30px_70px_rgba(7,21,36,0.12)] space-y-4">
+        {/* PROMINENT CENTRAL TYPOGRAPHY — FULLY TRANSPARENT CLEAN GLASS CARD */}
+        <div className="relative z-30 max-w-lg w-full px-4 text-center pointer-events-auto">
+          <div className="rounded-[28px] bg-transparent backdrop-blur-sm border border-white/35 p-5 sm:p-7 shadow-[0_20px_45px_rgba(7,21,36,0.1)] space-y-3">
             {/* Category tag & Number */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/30 border border-white/50 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#0284C7] font-black shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-transparent border border-white/30 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#0284C7] font-black shadow-xs">
               <Anchor className="w-3.5 h-3.5 text-[#006A60]" />
               <span>
                 {language === "ta" ? currentVariety.tagTa : currentVariety.tagEn} • {currentVariety.number}
@@ -160,30 +167,30 @@ export function ZoomParallax({ onSelectVariety }: ZoomParallaxProps) {
 
             {/* Giant Centered Headline with High Contrast Readability */}
             <div>
-              <h2 className="font-serif text-4xl sm:text-6xl md:text-7xl font-black text-[#071524] tracking-tight leading-tight transition-all duration-300">
+              <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-[#071524] tracking-tight leading-tight transition-all duration-300 drop-shadow-xs">
                 {language === "ta" ? currentVariety.nameTa : currentVariety.nameEn}
               </h2>
 
-              <div className="font-serif text-lg sm:text-2xl text-[#0B1E32] mt-1 font-black">
+              <div className="font-serif text-base sm:text-xl text-[#0B1E32] mt-0.5 font-black">
                 ({currentVariety.english})
               </div>
 
-              <div className="text-xs sm:text-sm font-mono text-[#006A60] font-black mt-1">
+              <div className="text-xs sm:text-sm font-mono text-[#006A60] font-black mt-0.5">
                 {currentVariety.tamil}
               </div>
             </div>
 
-            {/* Quick Navigation Pills Across All 11 Varieties */}
-            <div className="pt-2 border-t border-white/30 flex flex-wrap justify-center gap-1.5 sm:gap-2">
+            {/* Quick Navigation Pills Across All 11 Varieties - Clean & Mobile Horizontal Scroll */}
+            <div className="pt-2 border-t border-white/20 flex flex-nowrap overflow-x-auto sm:flex-wrap justify-start sm:justify-center gap-1.5 py-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {VARIETIES.map((v, i) => (
                 <button
                   key={v.id}
                   onClick={() => scrollToDetail(v.id)}
-                  className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono font-black transition-all cursor-pointer ${
+                  className={`shrink-0 px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono font-black transition-all cursor-pointer ${
                     activeIdx === i
-                      ? "bg-[#0284C7] text-white shadow-md scale-105"
-                      : "bg-white/25 backdrop-blur-sm text-[#071524] hover:text-[#0284C7] hover:bg-white/50 border border-white/40"
-                    }`}
+                      ? "bg-[#071524] text-white shadow-sm scale-105"
+                      : "bg-transparent backdrop-blur-xs text-[#071524] hover:text-[#0284C7] hover:bg-white/20 border border-white/25"
+                  }`}
                 >
                   {language === "ta" ? v.nameTa : v.nameEn}
                 </button>
@@ -194,23 +201,23 @@ export function ZoomParallax({ onSelectVariety }: ZoomParallaxProps) {
             <div className="pt-1 flex items-center justify-center gap-3">
               <button
                 onClick={() => scrollToDetail(currentVariety.id)}
-                className="px-6 py-2.5 rounded-full bg-[#071524] hover:bg-[#0284C7] text-white text-xs font-sans font-black tracking-wider uppercase transition-all shadow-[0_10px_25px_rgba(15,37,55,0.3)] active:scale-95 cursor-pointer flex items-center gap-2"
+                className="px-5 py-2 rounded-full bg-[#071524] hover:bg-[#0284C7] text-white text-xs font-sans font-black tracking-wider uppercase transition-all shadow-[0_8px_20px_rgba(7,21,36,0.3)] active:scale-95 cursor-pointer flex items-center gap-1.5"
               >
                 <span>
                   {t("viewVarietyDetails")} ({language === "ta" ? currentVariety.nameTa : currentVariety.nameEn})
                 </span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Scroll To Explore Hint */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 text-[11px] font-mono text-[#0284C7] pointer-events-none animate-bounce">
-          <span className="uppercase tracking-widest font-semibold">{t("scrollToZoomHint")}</span>
-          <ChevronDown className="w-4 h-4 text-[#0284C7]" />
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-0.5 text-[10px] sm:text-[11px] font-mono text-[#0284C7] pointer-events-none animate-bounce">
+          <span className="uppercase tracking-widest font-black">{t("scrollToZoomHint")}</span>
+          <ChevronDown className="w-3.5 h-3.5 text-[#0284C7]" />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

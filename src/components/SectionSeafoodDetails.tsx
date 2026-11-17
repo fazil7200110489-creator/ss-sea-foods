@@ -460,14 +460,14 @@ function SingleSeafoodRow({
     >
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-          {/* LEFT SIDE: Apple-Style Card for Seafood Photograph */}
+          {/* LEFT SIDE: Fully Transparent Clean Card for Seafood Photograph */}
           <div className="lg:col-span-7 flex justify-center lg:justify-start">
             <motion.div
               style={{ y: imageY }}
               className="relative max-w-lg w-full will-change-transform"
             >
-              <div className="relative rounded-[32px] overflow-hidden bg-white/12 backdrop-blur-xl border border-white/40 p-3 sm:p-4 shadow-[0_25px_60px_rgba(7,21,36,0.1)] hover:shadow-[0_30px_70px_rgba(2,132,199,0.2)] transition-all duration-500">
-                <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-white/5">
+              <div className="relative rounded-[32px] overflow-hidden bg-transparent backdrop-blur-md border border-white/30 p-3 sm:p-4 shadow-[0_20px_45px_rgba(7,21,36,0.1)] hover:shadow-[0_25px_55px_rgba(2,132,199,0.2)] transition-all duration-500">
+                <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-transparent">
                   <img
                     src={item.image}
                     alt={`${item.nameEn} (${item.englishAlt})`}
@@ -476,13 +476,13 @@ function SingleSeafoodRow({
                 </div>
 
                 {/* Status Badge */}
-                <div className="absolute top-6 left-6 px-3.5 py-1.5 rounded-full bg-white/25 backdrop-blur-md border border-white/40 text-[10px] sm:text-xs font-mono text-[#0284C7] font-black flex items-center gap-1.5 shadow-sm">
+                <div className="absolute top-6 left-6 px-3.5 py-1.5 rounded-full bg-transparent backdrop-blur-md border border-white/30 text-[10px] sm:text-xs font-mono text-[#0284C7] font-black flex items-center gap-1.5 shadow-sm">
                   <Sparkles className="w-3.5 h-3.5 text-[#006A60]" />
                   <span>{language === "ta" ? item.badgeTa : item.badgeEn}</span>
                 </div>
 
                 {/* Number Strip */}
-                <div className="mt-3 p-3.5 rounded-xl bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-between text-xs font-mono">
+                <div className="mt-3 p-3.5 rounded-xl bg-transparent backdrop-blur-xs border border-white/25 flex items-center justify-between text-xs font-mono">
                   <span className="text-[#071524] font-black">
                     {language === "ta" ? `பிரிவு ${item.sectionNumber} • ${item.typicalSizesTa}` : `SECTION ${item.sectionNumber} • ${item.typicalSizesEn}`}
                   </span>
@@ -494,10 +494,10 @@ function SingleSeafoodRow({
             </motion.div>
           </div>
 
-          {/* RIGHT SIDE: Apple-Style Information Card */}
+          {/* RIGHT SIDE: Fully Transparent Clean Information Card */}
           <div className="lg:col-span-5 flex items-start justify-between gap-4">
-            <div className="p-6 sm:p-8 rounded-[32px] bg-white/12 backdrop-blur-xl border border-white/40 shadow-[0_25px_60px_rgba(7,21,36,0.1)] space-y-3.5 max-w-lg w-full">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/40 text-[10px] font-mono uppercase tracking-[0.2em] text-[#0284C7] font-black shadow-xs">
+            <div className="p-6 sm:p-8 rounded-[32px] bg-transparent backdrop-blur-md border border-white/30 shadow-[0_20px_45px_rgba(7,21,36,0.1)] space-y-3.5 max-w-lg w-full">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-transparent border border-white/30 text-[10px] font-mono uppercase tracking-[0.2em] text-[#0284C7] font-black shadow-xs">
                 <Anchor className="w-3.5 h-3.5 text-[#006A60]" />
                 <span>
                   {language === "ta" ? item.categoryTa : item.categoryEn} • {item.sectionNumber}
@@ -531,7 +531,7 @@ function SingleSeafoodRow({
               </div>
 
               {/* Culinary note */}
-              <div className="p-3.5 rounded-2xl bg-white/20 backdrop-blur-md border border-white/40 text-xs font-mono text-[#071524] font-bold">
+              <div className="p-3.5 rounded-2xl bg-transparent backdrop-blur-xs border border-white/25 text-xs font-mono text-[#071524] font-bold">
                 <strong className="text-[#0284C7] font-black">{language === "ta" ? "சிறந்த சமையல் முறை:" : "Best Prepared:"}</strong>{" "}
                 {language === "ta" ? item.culinaryNoteTa : item.culinaryNoteEn}
               </div>

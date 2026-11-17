@@ -22,7 +22,7 @@ export function HeaderNav({ onQuickContact }: HeaderNavProps) {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-10 lg:px-20 py-3 sm:py-4 flex items-center justify-between transition-all pointer-events-auto bg-white/80 backdrop-blur-2xl border-b border-white/60 shadow-[0_4px_30px_rgba(15,37,55,0.04)]">
+      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-10 lg:px-20 py-3 sm:py-4 flex items-center justify-between transition-all pointer-events-auto bg-transparent backdrop-blur-md border-b border-white/30 shadow-[0_4px_30px_rgba(15,37,55,0.04)]">
         {/* Left: Brand Identity */}
         <div
           onClick={() => scrollTo("hero-harvest")}
@@ -42,26 +42,26 @@ export function HeaderNav({ onQuickContact }: HeaderNavProps) {
         </div>
 
         {/* Center: Live Harbor Dispatch Status (Tablet & Desktop) */}
-        <div className="hidden lg:flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 border border-[#D2E4F0] text-xs font-mono text-[#0F2537] shadow-xs">
+        <div className="hidden lg:flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-transparent backdrop-blur-md border border-white/30 text-xs font-mono text-[#0F2537] shadow-xs">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0D9488] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0D9488]"></span>
           </span>
           <span className="text-[#0284C7] font-semibold">{t("harborDispatch")}</span>
-          <span className="text-[#486581]">{t("harborStatus")}</span>
+          <span className="text-[#071524] font-bold">{t("harborStatus")}</span>
         </div>
 
         {/* Right: Apple-Style Language Switcher + Call CTA + Menu */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Apple-Style Segmented Language Toggle Pill */}
-          <div className="flex items-center p-0.5 rounded-full bg-[#F0F9FF] border border-[#BAE6FD] text-[11px] font-mono shadow-inner">
+          <div className="flex items-center p-0.5 rounded-full bg-transparent backdrop-blur-md border border-white/30 text-[11px] font-mono shadow-xs">
             <button
               onClick={() => setLanguage("en")}
               aria-label="Switch to English"
               className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${
                 language === "en"
-                  ? "bg-white text-[#0F2537] font-bold shadow-xs scale-102"
-                  : "text-[#486581] hover:text-[#0F2537]"
+                  ? "bg-[#071524] text-white font-bold shadow-xs scale-102"
+                  : "text-[#071524] hover:text-[#0284C7] font-semibold"
               }`}
             >
               EN
@@ -72,7 +72,7 @@ export function HeaderNav({ onQuickContact }: HeaderNavProps) {
               className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${
                 language === "ta"
                   ? "bg-[#0284C7] text-white font-bold shadow-xs scale-102"
-                  : "text-[#486581] hover:text-[#0284C7]"
+                  : "text-[#071524] hover:text-[#0284C7] font-semibold"
               }`}
             >
               தமிழ்
@@ -81,7 +81,7 @@ export function HeaderNav({ onQuickContact }: HeaderNavProps) {
 
           <a
             href="tel:+919840012345"
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/95 hover:bg-[#F0F9FF] border border-[#BAE6FD] text-[#0F2537] text-xs font-mono font-medium shadow-xs transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-transparent backdrop-blur-md hover:bg-white/20 border border-white/30 text-[#071524] text-xs font-mono font-bold shadow-xs transition-all"
           >
             <Phone className="w-3.5 h-3.5 text-[#0284C7]" />
             <span>+91 98400 12345</span>
